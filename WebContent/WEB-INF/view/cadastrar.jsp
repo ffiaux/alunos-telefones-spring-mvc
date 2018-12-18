@@ -6,6 +6,8 @@
     <title>Novo aluno</title>
 </head>
  
+ 
+ 
 <body>
     <h2>Cadastro de aluno</h2>
     <br/>
