@@ -16,6 +16,7 @@
                 <td><spr:input path="nome" /></td>
             </tr>
             <tr>
+            
                 <td colspan="2"><input type="submit" value="Cadastrar"/></td>
             </tr>
         </table>
