@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,11 +14,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alunos.spring.manager.AlunosManager;
 import com.alunos.spring.model.Aluno;
 
 @Controller
 public class HelloController
 {
+	@Autowired
+	private AlunosManager alunosManager;
+	
 	@GetMapping(value = "/")
 	public String index(Locale locale, Model model)
 	{
