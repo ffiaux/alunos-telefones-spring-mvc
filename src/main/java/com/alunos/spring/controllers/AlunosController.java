@@ -16,9 +16,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.alunos.spring.manager.AlunosManager;
 import com.alunos.spring.model.Aluno;
+import com.alunos.spring.model.TelefoneTipo;
 
 @Controller
-public class HelloController
+public class AlunosController
 {
 	@Autowired
 	private AlunosManager alunosManager;
@@ -35,46 +36,35 @@ public class HelloController
 		return "hello";
 	}
 	
-	@GetMapping(value = "/cadastrar")
-	public String cadastrar(Locale locale, Model model)
+	@GetMapping(value = "/matricular")
+	public String matricular(Locale locale, Model model)
 	{
         Aluno aluno = new Aluno();
         model.addAttribute("aluno", aluno);
         
-		return "cadastrar";
+		return "matricular";
 	}
 	
-	@PostMapping(value = "/submit")
-	public String submit(Locale locale, @ModelAttribute("aluno") Aluno a, BindingResult result, SessionStatus status)
+	@PostMapping(value = "/matricular")
+	public String confirmarMatricula(Locale locale, @ModelAttribute("aluno") Aluno a, BindingResult result, SessionStatus status)
 	{
-		System.out.println(a.getNome());
+		a.getTelefones().get(0).setTipo(TelefoneTipo.CELULAR);
+		a.getTelefones().get(1).setTipo(TelefoneTipo.RESIDENCIAL);
 		
-		return "list";
+		alunosManager.matricular(a);
+		
+		return "redirect:/alunosLista";
 	}	
 
-	@GetMapping(value = "/list")
+	@GetMapping(value = "/alunosLista")
 	public ModelAndView getdata()
 	{
-		List<String> list = getList();
+		List<Aluno> alunos = alunosManager.getAlunos();
 
 		// return back to index.jsp
-		ModelAndView model = new ModelAndView("list");
-		model.addObject("lists", list);
+		ModelAndView model = new ModelAndView("alunosLista");
+		model.addObject("alunos", alunos);
 
 		return model;
-	}
-
-	private List<String> getList()
-	{
-		List<String> list = new ArrayList<String>();
-		list.add("List A");
-		list.add("List B");
-		list.add("List C");
-		list.add("List D");
-		list.add("List 1");
-		list.add("List 2");
-		list.add("List 3");
-
-		return list;
 	}
 }

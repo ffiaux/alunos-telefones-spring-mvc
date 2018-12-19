@@ -9,13 +9,12 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Component;
 
-import com.alunos.spring.model.Aluno;
+import com.alunos.spring.model.Matricula;
 
+@Component("matriculaDAO")
+public class MatriculaDAO extends BaseDAO{
 
-@Component("alunoDAO")
-public class AlunoDAO extends BaseDAO
-{
-	public Aluno saveOrUpdate(Aluno obj)
+	public Matricula saveOrUpdate(Matricula obj)
 	{
 		Session s = super.getSession();
 		Transaction transObj = s.beginTransaction();
@@ -26,27 +25,29 @@ public class AlunoDAO extends BaseDAO
 		return obj;
 	}
 
-	public Aluno find(Integer id)
+	public Matricula find(Integer id)
 	{
 		Session sessionObj = super.getSession();
-		Aluno a = sessionObj.find(Aluno.class, id);
+		Matricula a = sessionObj.find(Matricula.class, id);
 		sessionObj.close();
 
 		return a;
 	}
 
-	public List<Aluno> findAll()
+	
+	public List<Matricula> findAll()
 	{
 		Session s = super.getSession();
 		CriteriaBuilder builder = s.getCriteriaBuilder();
-		CriteriaQuery<Aluno> criteria = builder.createQuery(Aluno.class);
-		criteria.from(Aluno.class);
-		List<Aluno> alunos = s.createQuery(criteria).getResultList();
+		CriteriaQuery<Matricula> criteria = builder.createQuery(Matricula.class);
+		criteria.from(Matricula.class);
+		List<Matricula> matriculas = s.createQuery(criteria).getResultList();
 		
-		return alunos;
+		return matriculas;
 	}
 
-	public void delete(Aluno obj)
+	
+	public void delete(Matricula obj)
 	{
 		Session s = super.getSession();
 		Transaction transObj = s.beginTransaction();

@@ -3,11 +3,31 @@ package com.alunos.spring.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table (name="Alunos")
+
 public class Aluno
 {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
+	private Integer id;
 	private String nome;
-	private Matricula matricula;
+	@OneToMany( mappedBy = "aluno")
 	private List<Telefone> telefones;
+	@OneToOne
+	@JoinColumn (name = "matriculaid")
+	private Matricula matricula;
 	
 	public Aluno()
 	{
@@ -43,4 +63,13 @@ public class Aluno
 	{
 		this.nome = nome;
 	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
 }

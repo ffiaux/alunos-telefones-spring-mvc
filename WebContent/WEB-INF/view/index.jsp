@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Sistema de alunos</title>
 </head>
 <body>
-	Index
+	Bem vindo ao sistema de alunos, clique <a href='alunosLista'>aqui</a> para gerenciar alunos
 </body>
 </html>

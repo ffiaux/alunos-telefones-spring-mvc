@@ -11,7 +11,7 @@
 <body>
     <h2>Cadastro de aluno</h2>
     <br/>
-    <spr:form method="post" action="submit" modelAttribute="aluno">
+    <spr:form method="post" action="matricular" modelAttribute="aluno">
         <table>
             <tr>
                 <td>Nome</td>
