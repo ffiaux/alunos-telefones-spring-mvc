@@ -18,7 +18,14 @@
                 <td><spr:input path="nome" /></td>
             </tr>
             <tr>
-            
+                <td>Telefone Celular</td>
+                <td><spr:input path="telefones[0].numero" /></td>
+            </tr>
+            <tr>
+                <td>Telefone Residencial</td>
+                <td><spr:input path="telefones[1].numero" /></td>
+            </tr>            
+            <tr>            
                 <td colspan="2"><input type="submit" value="Cadastrar"/></td>
             </tr>
         </table>
