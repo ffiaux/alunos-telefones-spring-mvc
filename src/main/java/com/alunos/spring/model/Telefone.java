@@ -11,60 +11,62 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table (name="Telefones")
-
+@Table(name = "Telefones")
 public class Telefone
 {
-	private String numero;
-	
-	@Enumerated(EnumType.STRING)
-	private TelefoneTipo tipo;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+	private String numero;
+
+	@Enumerated(EnumType.STRING)
+	private TelefoneTipo tipo;
+
 	@ManyToOne
 	@JoinColumn(name = "alunoid")
 	private Aluno aluno;
-	
+
 	public Telefone()
 	{
 	}
-	
+
 	public String getNumero()
 	{
 		return numero;
 	}
-	
+
 	public void setNumero(String numero)
 	{
 		this.numero = numero;
 	}
 
-	public TelefoneTipo getTipo() {
+	public TelefoneTipo getTipo()
+	{
 		return tipo;
 	}
 
-	public void setTipo(TelefoneTipo tipo) {
+	public void setTipo(TelefoneTipo tipo)
+	{
 		this.tipo = tipo;
 	}
 
-	public Integer getId() {
+	public Integer getId()
+	{
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Integer id)
+	{
 		this.id = id;
 	}
 
-	public Aluno getAluno() {
+	public Aluno getAluno()
+	{
 		return aluno;
 	}
 
-	public void setAluno(Aluno aluno) {
+	public void setAluno(Aluno aluno)
+	{
 		this.aluno = aluno;
 	}
-	
-	
 }

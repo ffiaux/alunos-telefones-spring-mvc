@@ -13,63 +13,77 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table (name="Alunos")
-
+@Table(name = "Alunos")
 public class Aluno
 {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
 	private Integer id;
 	private String nome;
-	@OneToMany( mappedBy = "aluno")
-	private List<Telefone> telefones;
-	@OneToOne
-	@JoinColumn (name = "matriculaid")
-	private Matricula matricula;
 	
+	@OneToMany(mappedBy = "aluno")
+	private List<Telefone> telefones;
+	
+	@OneToMany(mappedBy = "aluno")
+	private List<Documento> documentos;
+	
+	@OneToOne
+	@JoinColumn(name = "matriculaid")
+	private Matricula matricula;
+
 	public Aluno()
 	{
 		this.telefones = new ArrayList<>();
+		this.documentos = new ArrayList<>();
 	}
 	
+	public List<Documento> getDocumentos()
+	{
+		return documentos;
+	}
+	
+	public void setDocumentos(List<Documento> documentos)
+	{
+		this.documentos = documentos;
+	}
+
 	public List<Telefone> getTelefones()
 	{
 		return telefones;
 	}
-	
+
 	public void setTelefones(List<Telefone> telefones)
 	{
 		this.telefones = telefones;
 	}
-	
+
 	public Matricula getMatricula()
 	{
 		return matricula;
 	}
-	
+
 	public void setMatricula(Matricula matricula)
 	{
 		this.matricula = matricula;
 	}
-	
+
 	public String getNome()
 	{
 		return nome;
 	}
-	
+
 	public void setNome(String nome)
 	{
 		this.nome = nome;
 	}
 
-	public Integer getId() {
+	public Integer getId()
+	{
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Integer id)
+	{
 		this.id = id;
 	}
-	
 }

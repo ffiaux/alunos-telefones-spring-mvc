@@ -11,58 +11,61 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table (name="Matriculas")
-
+@Table(name = "Matriculas")
 public class Matricula
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
 	private Integer id;
-	
+
 	private String codigo;
-	
 	private Date dataMatricula;
+
 	@OneToOne
-	@JoinColumn (name = "alunoid")
+	@JoinColumn(name = "alunoid")
 	private Aluno aluno;
-	
+
 	public Matricula()
 	{
 	}
-	
+
 	public void setCodigo(String codigo)
 	{
 		this.codigo = codigo;
 	}
-	
+
 	public String getCodigo()
 	{
 		return codigo;
 	}
 
-	public Integer getId() {
+	public Integer getId()
+	{
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Integer id)
+	{
 		this.id = id;
 	}
 
-	public Date getDataMatricula() {
+	public Date getDataMatricula()
+	{
 		return dataMatricula;
 	}
 
-	public void setDataMatricula(Date dataMatricula) {
+	public void setDataMatricula(Date dataMatricula)
+	{
 		this.dataMatricula = dataMatricula;
 	}
 
-	public Aluno getAluno() {
+	public Aluno getAluno()
+	{
 		return aluno;
 	}
 
-	public void setAluno(Aluno aluno) {
+	public void setAluno(Aluno aluno)
+	{
 		this.aluno = aluno;
 	}
-	
 }

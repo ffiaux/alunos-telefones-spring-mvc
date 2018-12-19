@@ -7,11 +7,9 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
 import com.alunos.spring.model.Aluno;
+import com.alunos.spring.model.Documento;
 import com.alunos.spring.model.Matricula;
 import com.alunos.spring.model.Telefone;
-
-
-
 
 public abstract class BaseDAO
 {
@@ -25,6 +23,7 @@ public abstract class BaseDAO
 		configObj.addAnnotatedClass(Aluno.class);
 		configObj.addAnnotatedClass(Matricula.class);
 		configObj.addAnnotatedClass(Telefone.class);
+		configObj.addAnnotatedClass(Documento.class);
 
 		// Since Hibernate Version 4.x, Service Registry Is Being Used
 		ServiceRegistry serviceRegistryObj = new StandardServiceRegistryBuilder().applySettings(configObj.getProperties()).build();
