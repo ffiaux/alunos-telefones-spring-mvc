@@ -10,7 +10,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @EnableWebMvc
-@ComponentScan(basePackages = "com.alunos.spring.controllers")
+@ComponentScan(basePackages = "com.alunos.spring")
 @Configuration
 public class ClientWebConfig implements WebMvcConfigurer
 {
