@@ -14,6 +14,7 @@ import java.util.Locale;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,8 +66,13 @@ public class AlunosController
 	}
 	
 	@PostMapping(value = "/matricular")
-	public String confirmarMatricula(Locale locale, @ModelAttribute("aluno") Aluno a, BindingResult result, SessionStatus status)
+	public String confirmarMatricula(Locale locale, @ModelAttribute("aluno") @Valid Aluno a, BindingResult result, SessionStatus status)
 	{
+		if (result.hasErrors())
+		{
+			return "matricular";
+		}
+		
 		a.getTelefones().get(0).setTipo(TelefoneTipo.CELULAR);
 		a.getTelefones().get(1).setTipo(TelefoneTipo.RESIDENCIAL);
 		

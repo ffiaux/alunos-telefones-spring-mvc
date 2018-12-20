@@ -13,7 +13,10 @@
         <table>
             <tr>
                 <td>Nome</td>
-                <td><spr:input path="nome" /></td>
+                <td>
+                	<spr:input path="nome" />
+                	<spr:errors path="nome" cssClass="error" />
+                </td>
             </tr>
             <tr>
                 <td>Telefone Celular</td>
