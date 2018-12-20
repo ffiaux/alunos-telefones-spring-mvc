@@ -19,7 +19,7 @@ public class ClientWebConfig implements WebMvcConfigurer
 	public CommonsMultipartResolver multipartResolver()
 	{
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-		multipartResolver.setMaxUploadSize(100000);
+		multipartResolver.setMaxUploadSize(16777216); //16MB
 		
 		return multipartResolver;
 	}

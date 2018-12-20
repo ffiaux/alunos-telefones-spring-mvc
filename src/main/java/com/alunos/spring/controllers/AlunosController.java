@@ -1,6 +1,5 @@
 package com.alunos.spring.controllers;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -103,10 +102,27 @@ public class AlunosController
 	public void downloadDocumento(Locale locale, Model model, @RequestParam("idDoc") Integer idDocumento, HttpServletResponse response) throws IOException
 	{
 		Documento doc = alunosManager.getDocumento(idDocumento);
+		
 		File f = new File(doc.getNomePasta() + doc.getNomeArquivo());
 		InputStream is = new FileInputStream(f);
+		
+		/*
+			To indicate to the browser that the file should be viewed in the browser:
+			
+			Content-Type: application/pdf
+			Content-Disposition: inline; filename="filename.pdf"
+			
+			To have the file downloaded rather than viewed:
+			
+			Content-Type: application/pdf
+			Content-Disposition: attachment; filename="filename.pdf"
+			
+			The quotes around the filename are required if the filename contains special characters such as filename[1].pdf which may otherwise break the browser's ability to handle the response.
+		 */
+		response.setHeader("Content-disposition", "attachment; filename="+ doc.getNomeArquivo());
 		IOUtils.copy(is, response.getOutputStream());
-		response.flushBuffer();
+		
+		//response.flushBuffer();
 	}	
 	
 	private void uploadFile(MultipartFile file, Aluno a, Documento d) throws IOException

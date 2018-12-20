@@ -16,10 +16,9 @@
     <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
     
     <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password"></property>
+    <property name="hibernate.connection.password">Malik478</property>
         
     <property name="show_sql">true</property>
     
-    <mapping class="model.Aluno"/>
   </session-factory>
 </hibernate-configuration>
