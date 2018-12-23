@@ -1,10 +1,19 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
+
+<head>
+	<link href="resources/css/bootstrap-4.1.3-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="resources/css/bootstrap-4.1.3-dist/css/bootstrap-grid.css" rel="stylesheet" type="text/css">
+	
+	<script type="text/javascript" src='resources/js/jquery-3.3.1.min.js'></script>
+	<script type="text/javascript" src='resources/css/bootstrap-4.1.3-dist/js/bootstrap.min.js'></script>
+</head>
+
 <body>
 	<h2>Lista de alunos</h2>
 
 	<c:if test="${not empty alunos}">
-		<table border="1">
+		<table class="table">
 			<thead>
 				<th>Nome</th>
 				<th>Matricula</th>

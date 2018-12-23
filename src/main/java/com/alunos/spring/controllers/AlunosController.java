@@ -65,7 +65,7 @@ public class AlunosController
 	}
 	
 	@PostMapping(value = "/matricular")
-	public String confirmarMatricula(Locale locale, @ModelAttribute("aluno") @Valid Aluno a, BindingResult result, SessionStatus status)
+	public String confirmarMatricula(Locale locale, @ModelAttribute("aluno") @Valid Aluno a, @RequestParam("dataNascimento") Date dataNascimento, BindingResult result, SessionStatus status)
 	{
 		if (result.hasErrors())
 		{
